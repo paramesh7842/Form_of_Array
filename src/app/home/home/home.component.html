@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-12 header">
+        <h4>Welcome To The Ice Cream Parlour</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 second_header">
+        <h5>Customer Name Is <u><i>{{customer_name}}</i></u></h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <form [formGroup]="form">
+            <div>
+                <input type="text" formControlName="name" placeholder="Cutomer Name">
+                <p *ngIf="name.touched && name.invalid">Please Enter Your Name</p>
+            </div>
+            <div>
+                <input type="text" formControlName="address" placeholder="Address">
+                <p *ngIf="address.touched && address.invalid">Please Enter Your Address</p>
+            </div>
+            <div>
+                <input type="text" formControlName="phone_number" placeholder="Contact Number">
+                <p *ngIf="phone_Number.touched && phone_Number.invalid">Please Enter Your Phone Number</p>
+            </div>
+            <div>
+                <input type="text" formControlName="email" placeholder="Email">
+                <p *ngIf="email.touched && email.invalid">Please Enter Your Email Id</p>
+            </div>
+            <div>
+                <input type="datetime-local" formControlName="date_of_purchase">
+                <p *ngIf="dateOfPurchase.touched && dateOfPurchase.invalid">Please Enter Date Of Purches</p>
+            </div>
+            <div>
+                <button class="btn btn-primary" type="submit" (click)="submitItems()">Submit</button>
+                <button class="btn btn-primary" type="reset">Clear</button>
+            </div>
+        </form>
+
+        <form [formGroup]="ice_cream">
+            <div>
+                <input type="text" formControlName="ice_cream" placeholder="Ice Cream Name">
+                <p *ngIf="iceCreamMenu.touched && iceCreamMenu.invalid">Please Enter Ice Cream Name</p>
+                <input type="number" formControlName="quantity" placeholder="Quantity">
+                <p *ngIf="quantity.touched && quantity.invalid">Please Enter Quantity</p>
+            </div>
+            <div>
+                <button class="btn btn-primary" type="menu" (click)="addItem()">Add</button>
+                <button class="btn btn-primary" type="button" (click)="removeItem(i)">Remove</button>
+                <button class="btn btn-primary" type="reset">Clear</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <table>
+            <tr>
+                <th>SL No</th>
+                <th>Items</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Bill Amount</th>
+            </tr>
+            <tr *ngFor="let item of list_of_items;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{item.ice_cream}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{price}}</td>
+                <td>{{amount}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
